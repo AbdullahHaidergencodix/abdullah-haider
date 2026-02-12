@@ -1,0 +1,32 @@
+import { useState, useEffect } from "react";
+const proofs = [
+  { name: "Sarah M.", action: "just booked a project", time: "2 min ago", flag: "\u{1F1FA}\u{1F1F8}" },
+  { name: "Omar A.", action: "got their website delivered", time: "15 min ago", flag: "\u{1F1E6}\u{1F1EA}" },
+  { name: "Jessica W.", action: "left a 5-star review", time: "1 hr ago", flag: "\u{1F1E8}\u{1F1E6}" },
+  { name: "Daniel K.", action: "just booked a project", time: "2 hrs ago", flag: "\u{1F1E9}\u{1F1EA}" },
+  { name: "Amira H.", action: "got their landing page", time: "3 hrs ago", flag: "\u{1F1F8}\u{1F1E6}" },
+  { name: "Ryan P.", action: "signed up for management", time: "5 hrs ago", flag: "\u{1F1EC}\u{1F1E7}" },
+];
+export default function SocialProof() {
+  const [current, setCurrent] = useState(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    let i = 0;
+    const show = () => { setCurrent(proofs[i % proofs.length]); setVisible(true); setTimeout(() => setVisible(false), 4000); i++; };
+    const initial = setTimeout(show, 8000);
+    const interval = setInterval(show, 15000);
+    return () => { clearTimeout(initial); clearInterval(interval); };
+  }, []);
+  if (!current) return null;
+  return (
+    <div className={"fixed bottom-6 left-6 z-50 transition-all duration-500 " + (visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none")}>
+      <div className="glass rounded-xl px-4 py-3 flex items-center gap-3 max-w-xs border border-white/[0.06]">
+        <span className="text-xl">{current.flag}</span>
+        <div>
+          <p className="text-[12px] text-white/70 font-medium">{current.name} {current.action}</p>
+          <p className="text-[10px] text-white/25">{current.time}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
