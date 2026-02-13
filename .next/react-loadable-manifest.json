@@ -23,6 +23,12 @@
       "static/chunks/components_DynamicTitle_js.js"
     ]
   },
+  "index.js -> ../components/FloatingEmojis": {
+    "id": "index.js -> ../components/FloatingEmojis",
+    "files": [
+      "static/chunks/components_FloatingEmojis_js.js"
+    ]
+  },
   "index.js -> ../components/IdlePrompt": {
     "id": "index.js -> ../components/IdlePrompt",
     "files": [
@@ -33,6 +39,12 @@
     "id": "index.js -> ../components/KeyboardHints",
     "files": [
       "static/chunks/components_KeyboardHints_js.js"
+    ]
+  },
+  "index.js -> ../components/LiveBackground": {
+    "id": "index.js -> ../components/LiveBackground",
+    "files": [
+      "static/chunks/components_LiveBackground_js.js"
     ]
   },
   "index.js -> ../components/PageProgress": {

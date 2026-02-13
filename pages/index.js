@@ -34,8 +34,10 @@ import ToastProvider from "../components/Toast";
 import TrustBadges from "../components/TrustBadges";
 import WhyMe from "../components/WhyMe";
 import NetworkStatus from "../components/NetworkStatus";
-import MorphBlob from "../components/MorphBlob";
+import OfferPopup from "../components/OfferPopup";
 
+const LiveBackground = dynamic(() => import("../components/LiveBackground"), { ssr: false });
+const FloatingEmojis = dynamic(() => import("../components/FloatingEmojis"), { ssr: false });
 const ThemeToggle = dynamic(() => import("../components/ThemeToggle"), { ssr: false });
 const CommandPalette = dynamic(() => import("../components/CommandPalette"), { ssr: false });
 const KeyboardHints = dynamic(() => import("../components/KeyboardHints"), { ssr: false });
@@ -54,7 +56,6 @@ export default function Home() {
     name: "Abdullah Haider", email: "Aboodiprofessional@gmail.com", telephone: "+923054573962",
     url: "https://www.gencodix.com", jobTitle: "Co-Founder & CEO",
     worksFor: { "@type": "Organization", name: "Gencodix", url: "https://www.gencodix.com" },
-    knowsAbout: ["Web Design", "Web Development", "UI/UX Design", "Landing Pages", "SEO"],
   };
 
   return (
@@ -63,8 +64,7 @@ export default function Home() {
         <title>Abdullah Haider — Web Designer & Developer | Gencodix</title>
         <meta name="description" content="I am Abdullah Haider, Co-Founder of Gencodix. I design and build stunning websites in 72 hours." />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" />
-        <meta name="theme-color" content="#0e1117" />
-        <meta name="theme-color" content="#f8f9fc" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#050510" />
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:title" content="Abdullah Haider — Web Designer & Developer" />
         <meta property="og:description" content="Websites delivered in 72 hours." />
@@ -74,16 +74,15 @@ export default function Home() {
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="robots" content="index, follow" />
-        <meta name="author" content="Abdullah Haider" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="apple-touch-icon" href="/icon-192.png" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </Head>
 
       <Preloader />
+      <LiveBackground />
+      <FloatingEmojis />
+      <OfferPopup />
       <NetworkStatus />
       <ScrollProgress />
       <ThemeToggle />
@@ -100,9 +99,7 @@ export default function Home() {
       <ToastProvider />
       <PageProgress />
 
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.2 }} className="noise page-enter relative">
-        <MorphBlob className="w-[400px] md:w-[800px] h-[400px] md:h-[800px] top-[20%] -left-[100px] md:-left-[200px]" />
-        <MorphBlob className="w-[300px] md:w-[600px] h-[300px] md:h-[600px] top-[60%] -right-[80px] md:-right-[150px]" />
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.2 }} className="noise page-enter relative z-[1]">
         <Navbar />
         <div className="relative"><Hero /><ScrollIndicator /></div>
         <Marquee />
