@@ -17,7 +17,7 @@ const projects = [
     featured: true,
   },
   {
-    title: "SaaS Landing Page",
+    title: "Lapak Skincare",
     type: "Landing Page",
     color: "from-accent-600/10 to-purple-600/5",
     tag: "Conversion +240%",
@@ -29,7 +29,7 @@ const projects = [
     featured: false,
   },
   {
-    title: "Ecommerce Storefront",
+    title: "Lapak Skincare",
     type: "Full Website",
     color: "from-emerald-600/10 to-accent-600/5",
     tag: "Revenue +180%",
@@ -41,7 +41,7 @@ const projects = [
     featured: false,
   },
   {
-    title: "Fintech Dashboard",
+    title: "Lapak Skincare",
     type: "Web App UI",
     color: "from-violet-600/10 to-accent-600/5",
     tag: "User Retention +95%",
@@ -53,7 +53,7 @@ const projects = [
     featured: false,
   },
   {
-    title: "Restaurant Chain",
+    title: "Lapak Skincare",
     type: "Landing Page",
     color: "from-orange-600/10 to-red-600/5",
     tag: "Bookings +320%",
@@ -65,7 +65,7 @@ const projects = [
     featured: false,
   },
   {
-    title: "Real Estate Platform",
+    title: "Lapak Skincare",
     type: "Full Website",
     color: "from-accent-600/10 to-emerald-600/5",
     tag: "Leads +200%",
