@@ -1,30 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 export default function BackToTop() {
   const [show, setShow] = useState(false);
-  const [progress, setProgress] = useState(0);
   useEffect(() => {
-    const handler = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      setShow(scrollTop > 400);
-      setProgress(docHeight > 0 ? (scrollTop / docHeight) : 0);
-    };
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
+    const fn = () => setShow(window.scrollY > 600);
+    window.addEventListener("scroll", fn, { passive: true });
+    return () => window.removeEventListener("scroll", fn);
   }, []);
-  const circumference = 2 * Math.PI * 18;
-  const offset = circumference - progress * circumference;
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className={"fixed bottom-24 right-6 z-50 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 cursor-none group " + (show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none")}
+      className={"fixed z-50 w-11 h-11 md:w-10 md:h-10 rounded-xl glass flex items-center justify-center transition-all duration-500 active:scale-90 " + (show ? "opacity-100 scale-100" : "opacity-0 scale-75 pointer-events-none")}
+      style={{ bottom: "max(5rem, calc(env(safe-area-inset-bottom, 0px) + 4rem))", right: "1.5rem" }}
       aria-label="Back to top"
     >
-      <svg className="absolute inset-0 w-12 h-12 -rotate-90" viewBox="0 0 40 40">
-        <circle cx="20" cy="20" r="18" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="2" />
-        <circle cx="20" cy="20" r="18" fill="none" stroke="#3b8eff" strokeWidth="2" strokeDasharray={circumference} strokeDashoffset={offset} strokeLinecap="round" className="transition-all duration-200" />
-      </svg>
-      <span className="text-white/50 text-sm group-hover:text-accent-400 transition-colors relative z-10">&#8593;</span>
+      <svg className="w-4 h-4 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" /></svg>
     </button>
   );
 }
